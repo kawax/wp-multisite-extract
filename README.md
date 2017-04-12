@@ -23,6 +23,11 @@ $ wp site list
 | 2       | http://sub.example.com/ | 2017        | 2017       |
 ```
 
+### Download this script
+```
+$ sudo curl -O https://raw.githubusercontent.com/kawax/wp-multisite-extract/master/wp-multisite-extract.sh
+```
+
 ### if your `table_prefix` isn't `wp_`, edit script
 ```
 PREFIX="wp_"
