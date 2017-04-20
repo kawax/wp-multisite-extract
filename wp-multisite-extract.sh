@@ -23,12 +23,10 @@ mkdir -p ${DIR}
 
 echo "database..."
 
-${WPCLI} db export --tables=$(${WPCLI} db tables ${PREFIX}$1_* wp_users wp_usermeta --format=csv --skip-plugins --skip-themes --allow-root) /tmp/db_export.sql --allow-root
+${WPCLI} db export --tables=$(${WPCLI} db tables ${PREFIX}$1_* wp_users wp_usermeta --format=csv --skip-plugins --skip-themes --allow-root) /tmp/export.sql --allow-root
 
 if [ $1 -ne 1 ]; then
-  sed -e "s#\`$PREFIX$1_*#\`$PREFIX#g" -e "s#/wp-content/uploads/sites/$1/#/wp-content/uploads/#g" /tmp/db_export.sql > /tmp/export.sql
-else
-  mv /tmp/db_export.sql /tmp/export.sql
+  sed -i -e "s#\`$PREFIX$1_*#\`$PREFIX#g" -e "s#/wp-content/uploads/sites/$1/#/wp-content/uploads/#g" /tmp/export.sql
 fi
 
 gzip /tmp/export.sql -c > ${DIR}/export.sql.gz
