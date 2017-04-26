@@ -59,6 +59,7 @@ $ wp core config ...
 No needs wp install
 
 ```
+$ gunzip export.sql.gz
 $ wp db import export.sql
 
 $ wp plugin install `cat plugins.txt`
